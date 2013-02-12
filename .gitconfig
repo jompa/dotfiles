@@ -1,0 +1,10 @@
+[user]
+	name = Johan Kock
+	email = johan.kock@gmail.com
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+	br = branch
+[color]
+	ui = true
