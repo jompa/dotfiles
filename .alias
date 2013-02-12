@@ -2,3 +2,7 @@
 alias gs="git status"
 alias gc="git commit"
 alias gd="git diff"
+
+# Django
+alias djrs="python manage.py runserver"
+
