@@ -10,6 +10,9 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+
 " Reload vimrc on save
 autocmd! bufwritepost .vimrc source %
 
@@ -49,3 +52,41 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+"set statusline=%{fugitive#statusline()}
+" ----------------------------------------------------------------------------
+"  Text Formatting
+" ----------------------------------------------------------------------------
+
+set expandtab              " expand tabs to spaces
+set softtabstop=2
+set shiftwidth=4           " distance to shift lines with < and >
+set ts=4                   " tab character display size
+set smarttab
+
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indet
+set wrap "Wrap lines
+" ----------------------------------------------------------------------------
+"  Graphical
+" ----------------------------------------------------------------------------
+
+set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+if has('gui_running')
+  colorscheme molokai
+
+  if system("uname") == "Darwin\n" " on OSX
+    "set guifont=Monaco:h12
+    "set lines=55
+    "set columns=94
+  else                         " on Ubuntu
+    set guifont=Monospace\ 9
+    "winpos 1100 0              " put window at right edge of left monitor
+    "set lines=85
+    "set columns=120
+  endif
+endif
