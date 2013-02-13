@@ -43,6 +43,10 @@ nmap <leader>w :w!<cr>
 "  Mappings
 " ----------------------------------------------------------------------------
 
+" Map space to / (search) and c-space to ? (backgwards search)
+map <space> /
+map - /
+map <c-space> ?
 "  exit insert mode
 imap jk <esc>
 
@@ -52,7 +56,8 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-"set statusline=%{fugitive#statusline()}
+map <leader>n :NERDTreeToggle<CR>
+
 " ----------------------------------------------------------------------------
 "  Text Formatting
 " ----------------------------------------------------------------------------
