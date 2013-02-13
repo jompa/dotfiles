@@ -1,10 +1,6 @@
-"   /\_\    ___     ___ ___   _____      __     
-"   \/\ \  / __`\ /' __` __`\/\ '__`\  /'__`\   
-"    \ \ \/\ \L\ \/\ \/\ \/\ \ \ \L\ \/\ \L\.\_ 
-"    _\ \ \ \____/\ \_\ \_\ \_\ \ ,__/\ \__/.\_\
-"  /\ \_\ \/___/  \/_/\/_/\/_/\ \ \/  \/__/\/_/
-"  \ \____/                    \ \_\           
-"  \/___/                      \/_/ 
+"Lots stolen from:
+"https://github.com/alexreisner/dotfiles/blob/master/.vimrc
+"https://github.com/mkotsalainen/dotvim/blob/master/vimrc
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -57,6 +53,7 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 map <leader>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -74,6 +71,19 @@ set tw=500
 set ai "Auto indent
 set si "Smart indet
 set wrap "Wrap lines
+" ----------------------------------------------------------------------------
+"  Visual Cues
+" ----------------------------------------------------------------------------
+
+syntax on                  " enable syntax highlighting
+let loaded_matchparen=1    " don't hightlight matching brackets/braces
+set laststatus=2           " always show the status line
+set hlsearch               " highlight all search terms
+set incsearch              " highlight search text as entered
+set ignorecase             " ignore case when searching
+set smartcase              " case sensitive only if capitals in search term
+"set colorcolumn=80        " not available until Vim 7.3
+set visualbell             " shut the fuck up
 " ----------------------------------------------------------------------------
 "  Graphical
 " ----------------------------------------------------------------------------
