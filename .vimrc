@@ -46,17 +46,20 @@ map <c-space> ?
 "  exit insert mode
 imap jk <esc>
 
-map ö $
-map Ö :
+map ö :
 
 " split navigation
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+map <C-up> <c-w>j
+map <C-down> <c-w>k
+map <C-right> <c-w>l
+map <C-left> <c-w>h
 
-map <D-j> jjjj
-map <D-k> kkkk
+" Quick navigation
+map <C-j> jjjj
+map <C-k> kkkk
+map <C-l> 0
+map <C-h> $
+
 
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
