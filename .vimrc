@@ -46,14 +46,21 @@ map <c-space> ?
 "  exit insert mode
 imap jk <esc>
 
+map ö $
+map Ö :
+
 " split navigation
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+map <D-j> jjjj
+map <D-k> kkkk
+
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+map <leader>f :FufFile **/<CR>
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -105,3 +112,9 @@ if has('gui_running')
     "set columns=120
   endif
 endif
+
+""""""""""""""""""""""""""""""
+" => MRU plugin
+""""""""""""""""""""""""""""""
+"let MRU_Max_Entries = 400
+"map <leader>f :MRU<CR>
