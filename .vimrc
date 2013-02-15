@@ -36,6 +36,17 @@ let mapleader = ","
 nmap <leader>w :w!<cr>
 
 " ----------------------------------------------------------------------------
+"  Ctags
+" ----------------------------------------------------------------------------
+set tags=tags
+"move into tags and back
+map <silent><C-Left> <C-T> 
+map <silent><C-Right> <C-]>
+
+"move between func defs
+map <C-up> [[
+map <C-down> ]]
+" ----------------------------------------------------------------------------
 "  Mappings
 " ----------------------------------------------------------------------------
 
@@ -49,10 +60,10 @@ imap jk <esc>
 map ö :
 
 " split navigation
-map <C-up> <c-w>j
-map <C-down> <c-w>k
-map <C-right> <c-w>l
-map <C-left> <c-w>h
+"map <C-up> <c-w>j
+"""map <C-down> <c-w>k
+"""map <C-right> <c-w>l
+"""map <C-left> <c-w>h
 
 " Quick navigation
 map <C-j> jjjj
