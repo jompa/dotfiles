@@ -11,8 +11,15 @@
 * NERDtree
 * tagbar
 
-### On Hold
+### Checkout
 * NERDcomment
 * Surround
+* Repeat
+* Sprarkup
+* Yankring
+* Syntastic
+* Codesniffer
+
+### Syntax
 
 ## Tmux
