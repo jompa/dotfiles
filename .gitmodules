@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/ack-vim"]
 	path = .vim/bundle/ack-vim
 	url = git@github.com:mileszs/ack.vim.git
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = git@github.com:majutsushi/tagbar.git
