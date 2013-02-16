@@ -23,6 +23,7 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 set history=700
+filetype plugin indent on  " load filetype plugin
 
 " Disable backupfiles
 set nobackup
@@ -71,6 +72,8 @@ map <C-k> kkkk
 map <C-l> 0
 map <C-h> $
 
+map <leader>a <Esc>:Ack!
+"set grepprg=ack\ --nogroup\ $*
 
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
