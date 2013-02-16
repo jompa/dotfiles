@@ -9,10 +9,10 @@
 * fuzzyfinder
 * L9
 * NERDtree
+* NERDcomment
 * tagbar
 
 ### Checkout
-* NERDcomment
 * Surround
 * Repeat
 * Sprarkup
