@@ -75,6 +75,7 @@ map <C-h> $
 map <leader>a <Esc>:Ack!
 "set grepprg=ack\ --nogroup\ $*
 
+map <leader><Space> <leader>c<Space>
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 map <leader>f :FufFile **/<CR>
