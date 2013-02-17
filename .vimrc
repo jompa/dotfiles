@@ -23,8 +23,13 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 set history=700
-filetype plugin indent on  " load filetype plugin
+filetype plugin  on  " load filetype plugin
+filetype indent  on  " load filetype plugen
 
+set whichwrap+=<,>,h,l
+
+" Set to auto read when a file is changed from the outside
+set autoread
 " Disable backupfiles
 set nobackup
 set nowritebackup
