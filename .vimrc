@@ -6,7 +6,6 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 
 " Reload vimrc on save
@@ -133,7 +132,8 @@ set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 if has('gui_running')
-  colorscheme molokai
+  "colorscheme molokai
+  colorscheme wombat 
 
   if system("uname") == "Darwin\n" " on OSX
     set guifont=Menlo:h14
