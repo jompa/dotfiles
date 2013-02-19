@@ -87,7 +87,7 @@ map <leader>a <Esc>:Ack!
 "set grepprg=ack\ --nogroup\ $*
 
 map <leader><Space> <leader>c<Space>
-map <leader>n :NERDTreeToggle<CR>
+map <silent> <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 "Fuzzyfinder
