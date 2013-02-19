@@ -13,9 +13,9 @@
 * tagbar
 * Syntastic
 * snipmate
+* Surround
 
 ### Checkout
-* Surround
 * Repeat
 * Sprarkup
 * Yankring
