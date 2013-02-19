@@ -125,7 +125,7 @@ if has('gui_running')
   colorscheme molokai
 
   if system("uname") == "Darwin\n" " on OSX
-    "set guifont=Monaco:h12
+    set guifont=Menlo:h14
     "set lines=55
     "set columns=94
   else                         " on Ubuntu
