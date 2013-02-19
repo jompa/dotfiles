@@ -45,5 +45,20 @@ source /usr/local/bin/virtualenvwrapper.sh
 export PIP_VIRTUALENV_BASE=$WORKON_HOME # Tell pip to create its virtualenvs in $WORKON_HOME.
 export PIP_RESPECT_VIRTUALENV=true # Tell pip to automatically use the currently active virtualenv.
 
-# Alias
-source $HOME/.alias
+
+# Check platform
+platform='unknown'
+unamestr=`uname`
+
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+fi
+
+if [[ $platform == 'linux' ]]; then
+    #alias ls='ls --color=auto'
+elif [[ $platform == 'Darwin' ]]; then
+    #alias ls='ls -G'
+    source $HOME/.mac_alias
+fi
