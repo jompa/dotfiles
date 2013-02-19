@@ -71,18 +71,28 @@ map ö :
 """map <C-right> <c-w>l
 """map <C-left> <c-w>h
 
+" Append closing characters
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
 " Quick navigation
 map <C-j> jjjj
 map <C-k> kkkk
 map <C-l> 0
 map <C-h> $
 
+" Ack
 map <leader>a <Esc>:Ack!
 "set grepprg=ack\ --nogroup\ $*
 
 map <leader><Space> <leader>c<Space>
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+
+"Fuzzyfinder
+"let g:fuf_file_exclude = '\v\~$|\.o$|\.exe$|\.bak$|\.swp|\.class$'
 map <leader>f :FufFile **/<CR>
 
 " ----------------------------------------------------------------------------
