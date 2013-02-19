@@ -11,14 +11,23 @@
 * NERDtree
 * NERDcomment
 * tagbar
+* Syntastic
+* snipmate
 
 ### Checkout
 * Surround
 * Repeat
 * Sprarkup
 * Yankring
-* Syntastic
 * Codesniffer
+
+### Dependencies
+* ack:
+    brew install ack
+* ctags:
+    brew install ctags
+* jslint
+    brew install jsl
 
 ### Syntax
 

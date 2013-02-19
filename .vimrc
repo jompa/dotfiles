@@ -1,4 +1,4 @@
-"Lots stolen from:
+" Eagerly stolen from:
 "https://github.com/alexreisner/dotfiles/blob/master/.vimrc
 "https://github.com/mkotsalainen/dotvim/blob/master/vimrc
 
@@ -124,6 +124,7 @@ set ignorecase             " ignore case when searching
 set smartcase              " case sensitive only if capitals in search term
 "set colorcolumn=80        " not available until Vim 7.3
 set visualbell             " shut the fuck up
+set showmatch
 " ----------------------------------------------------------------------------
 "  Graphical
 " ----------------------------------------------------------------------------
