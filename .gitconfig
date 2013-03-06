@@ -6,5 +6,7 @@
 	co = checkout
 	st = status
 	br = branch
+    unstage = reset HEAD
+    uncommit = reset --soft HEAD^
 [color]
 	ui = true
