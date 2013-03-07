@@ -89,6 +89,8 @@ map <leader>a <Esc>:Ack!
 map <leader><Space> <leader>c<Space>
 map <silent> <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+" Exclude files
+let NERDTreeIgnore = ['\.pyc$']
 
 "Fuzzyfinder
 "let g:fuf_file_exclude = '\v\~$|\.o$|\.exe$|\.bak$|\.swp|\.class$'
