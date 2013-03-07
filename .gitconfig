@@ -5,8 +5,13 @@
 	ci = commit
 	co = checkout
 	st = status
-	br = branch
     unstage = reset HEAD
     uncommit = reset --soft HEAD^
+    r = remote -v
+    t = tag -l
+    # branch
+    b = branch -v
+	br = branch
+    nb = checkout -b 
 [color]
 	ui = true
