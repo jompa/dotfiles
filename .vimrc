@@ -48,6 +48,8 @@ set tags=tags
 map <silent><C-Left> <C-T> 
 map <silent><C-Right> <C-]>
 
+"map <silent><leader>t <C-T> 
+"map <silent><leader>b <C-]> 
 "move between func defs
 map <C-up> [[
 map <C-down> ]]
