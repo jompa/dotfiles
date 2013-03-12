@@ -113,7 +113,7 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indet
-set wrap "Wrap lines
+"set wrap "Wrap lines
 " ----------------------------------------------------------------------------
 "  Visual Cues
 " ----------------------------------------------------------------------------
@@ -128,6 +128,10 @@ set smartcase              " case sensitive only if capitals in search term
 "set colorcolumn=80        " not available until Vim 7.3
 set visualbell             " shut the fuck up
 set showmatch
+set number
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
+hi Cursor guibg=#0087ad
 " ----------------------------------------------------------------------------
 "  Graphical
 " ----------------------------------------------------------------------------
@@ -137,11 +141,11 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 if has('gui_running')
   "colorscheme molokai
-  colorscheme wombat 
+  "colorscheme wombat 
+  colorscheme jompa_wombat 
 
   if system("uname") == "Darwin\n" " on OSX
-    set guifont=Menlo:h14
-    "set lines=55
+    set guifont=Menlo:h14 "set lines=55
     "set columns=94
   else                         " on Ubuntu
     set guifont=Monospace\ 9
