@@ -130,8 +130,14 @@ set visualbell             " shut the fuck up
 set showmatch
 set number
 set cursorline
+
+" Hightlight cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey40
 hi Cursor guibg=#0087ad
+
+" Highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=darkgreen guibg=pink
+match ExtraWhitespace /\s\+\%#\@<!$/
 " ----------------------------------------------------------------------------
 "  Graphical
 " ----------------------------------------------------------------------------
