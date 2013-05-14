@@ -93,8 +93,8 @@ endif
 
 " allow plugins by file type
 let g:syntastic_mode_map = { 'mode': 'passive' }
-filetype plugin  on  " load filetype plugin
-filetype indent  on  " load filetype plugen
+filetype plugin on  " load filetype plugin
+filetype indent on  " load filetype plugen
 
 set whichwrap+=<,>,h,l
 
@@ -162,7 +162,7 @@ map <C-l> 0
 map <C-h> $
 
 " Ack
-map <leader>a <Esc>:Ack!
+map <leader>a <Esc>:Ag 
 "set grepprg=ack\ --nogroup\ $*
 
 map <leader><Space> <leader>c<Space>
