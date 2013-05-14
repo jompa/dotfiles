@@ -27,7 +27,9 @@ filetype indent  on  " load filetype plugen
 
 set whichwrap+=<,>,h,l
 
+set cursorline
 " Set to auto read when a file is changed from the outside
+set spell
 set autoread
 " Disable backupfiles
 set nobackup
@@ -48,6 +50,8 @@ set tags=tags
 map <silent><C-Left> <C-T> 
 map <silent><C-Right> <C-]>
 
+map <leader>v :bnext<CR>
+map <leader>c :bprevious<CR>
 "map <silent><leader>t <C-T> 
 "map <silent><leader>b <C-]> 
 "move between func defs
