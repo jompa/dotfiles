@@ -6,22 +6,93 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-set encoding=utf-8 " Necessary to show Unicode glyphs
+"set encoding=utf-8 " Necessary to show Unicode glyphs
 
 " Reload vimrc on save
-autocmd! bufwritepost .vimrc source %
+"autocmd! bufwritepost .vimrc source %
+" Setting up Vundle - the vim plugin bundler
 
-" ---------------------------------------------------------------------------
-"  Pathogen (must be set up before filetype detection)
-" ---------------------------------------------------------------------------
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
 
-" system's .vimrc calls filetype; turn it off here to force reload
-filetype on " turn on to avoid non-zero exit code on OSX
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-set history=700
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" Better file browser
+Bundle 'scrooloose/nerdtree'
+" Code commenter
+Bundle 'scrooloose/nerdcommenter'
+" Class/module browser
+Bundle 'majutsushi/tagbar'
+" Code and files fuzzy finder
+Bundle 'kien/ctrlp.vim'
+" max number of mru entries, if it gets too large it takes time to load it
+let g:ctrlp_mruf_max = 150
+" Zen coding
+Bundle 'mattn/zencoding-vim'
+Bundle 'kien/tabman.vim'
+" Powerline
+Bundle 'Lokaltog/vim-powerline'
+" Terminal Vim with 256 colors colorscheme
+Bundle 'fisadev/fisa-vim-colorscheme'
+" Consoles as buffers
+Bundle 'rosenfeld/conque-term'
+" Pending tasks list
+Bundle 'fisadev/FixedTaskList.vim'
+" Surround
+Bundle 'tpope/vim-surround'
+" Autoclose
+Bundle 'Townk/vim-autoclose'
+" Indent text object
+Bundle 'michaeljsmith/vim-indent-object'
+" Python mode (indentation, doc, refactor, lints, code checking, motion and
+" operators, highlighting, run and ipdb breakpoints)
+" Bundle 'klen/python-mode'
+" Snippets manager (SnipMate), dependencies, and snippets repo
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/vim-snippets'
+Bundle 'garbas/vim-snipmate'
+" Git diff icons on the side of the file lines
+Bundle 'airblade/vim-gitgutter'
+" Autocompletion
+Bundle 'AutoComplPop'
+" Search results counter
+Bundle 'IndexedSearch'
+" XML/HTML tags navigation
+Bundle 'matchit.zip'
+" Gvim colorscheme
+Bundle 'Wombat'
+
+Bundle 'rking/ag.vim'
+
+Bundle 'duff/vim-bufonly'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/syntastic'
+let g:syntastic_auto_loc_list=1
+
+" Installing plugins the first time
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall
+endif
+
+
+" allow plugins by file type
+let g:syntastic_mode_map = { 'mode': 'passive' }
 filetype plugin  on  " load filetype plugin
 filetype indent  on  " load filetype plugen
 
@@ -35,6 +106,8 @@ set autoread
 set nobackup
 set nowritebackup
 set noswapfile
+
+set history=700
 
 " Rebind <Leader> key
 let mapleader = "," 
@@ -77,10 +150,10 @@ map ö :
 """map <C-left> <c-w>h
 
 " Append closing characters
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
+"inoremap {      {}<Left>
+"inoremap {<CR>  {<CR>}<Esc>O
+"inoremap {{     {
+"inoremap {}     {}
 
 " Quick navigation
 map <C-j> jjjj
@@ -98,7 +171,14 @@ let NERDTreeShowHidden=1
 
 "Fuzzyfinder
 "let g:fuf_file_exclude = '\v\~$|\.o$|\.exe$|\.bak$|\.swp|\.class$'
-map <leader>f :FufFile **/<CR>
+"map <leader>f :FufFile **/<CR>
+" CtrlP (new fuzzy finder)
+let g:ctrlp_map = ',e'
+nmap ,g :CtrlPBufTag<CR>
+nmap ,G :CtrlPBufTagAll<CR>
+nmap ,f :CtrlPLine<CR>
+nmap ,b :CtrlPBuffer<CR>
+nmap ,m :CtrlPMRUFiles<CR>
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
