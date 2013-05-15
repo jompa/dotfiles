@@ -1,4 +1,4 @@
-" Eagerly stolen from:
+"Eagerly stolen from:
 "https://github.com/alexreisner/dotfiles/blob/master/.vimrc
 "https://github.com/mkotsalainen/dotvim/blob/master/vimrc
 
