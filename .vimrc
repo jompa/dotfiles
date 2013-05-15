@@ -90,6 +90,8 @@ map <leader>a <Esc>:Ack!
 
 map <leader><Space> <leader>c<Space>
 map <silent> <leader>n :NERDTreeToggle<CR>
+" Find current file in NerdTree
+map <silent> <leader>N :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 " Exclude files
 let NERDTreeIgnore = ['\.pyc$']
@@ -97,6 +99,10 @@ let NERDTreeIgnore = ['\.pyc$']
 "Fuzzyfinder
 "let g:fuf_file_exclude = '\v\~$|\.o$|\.exe$|\.bak$|\.swp|\.class$'
 map <leader>f :FufFile **/<CR>
+
+" Buffers
+map <leader>b :bp<CR>
+map <leader>B :bn<CR>
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
