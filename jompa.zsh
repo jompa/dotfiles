@@ -15,7 +15,6 @@ alias gc='git commit'
 alias gpull='git pull'
 alias gpush='git push'
 alias lns="ln -s"
-alias ....=../../../
 
 # Virtualenv python 2.7.3
 alias mkve='mkvirtualenv --no-site-packages --python=/usr/local/Cellar/python/2.7.3/bin/python'
