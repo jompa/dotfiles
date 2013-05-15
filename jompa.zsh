@@ -6,8 +6,19 @@ alias e='vim'
 alias h='history'
 alias hg='history | grep'
 
+# Git aliases
 alias gs='git status'
+alias gd='git diff'
+alias ga='git add'
+alias gap='git add -p'
 alias gc='git commit'
+alias gpull='git pull'
+alias gpush='git push'
+alias lns="ln -s"
+alias ....=../../../
+
+# Virtualenv python 2.7.3
+alias mkve='mkvirtualenv --no-site-packages --python=/usr/local/Cellar/python/2.7.3/bin/python'
 
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
