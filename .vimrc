@@ -161,10 +161,11 @@ map <C-k> kkkk
 map <C-l> 0
 map <C-h> $
 
-" Ack
+" Ag
 map <leader>a <Esc>:Ag 
 "set grepprg=ack\ --nogroup\ $*
 
+map <leader>t :TagbarToggle<CR>
 map <leader><Space> <leader>c<Space>
 map <silent> <leader>n :NERDTreeToggle<CR>
 " Find current file in NerdTree
