@@ -240,7 +240,7 @@ if has('gui_running')
   "colorscheme molokai
   "colorscheme wombat 
   colorscheme jompa_wombat 
-
+  set guioptions-=T
   if system("uname") == "Darwin\n" " on OSX
     set guifont=Menlo:h14 "set lines=55
     "set columns=94
