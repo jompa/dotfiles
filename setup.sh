@@ -2,7 +2,7 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-declare -a symlinks=( ".zshrc" ".alias" ".vim" ".vimrc")
+declare -a symlinks=( ".zshrc" ".vim" ".vimrc")
 
 for var in ${symlinks[@]}
 do
