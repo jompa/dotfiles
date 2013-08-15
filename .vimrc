@@ -78,6 +78,8 @@ Bundle 'Wombat'
 
 Bundle 'rking/ag.vim'
 
+Bundle 'jimenezrick/vimerl'
+
 Bundle 'duff/vim-bufonly'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
