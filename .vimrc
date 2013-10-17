@@ -83,6 +83,8 @@ Bundle 'jimenezrick/vimerl'
 Bundle 'duff/vim-bufonly'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
+Bundle 'kchmck/vim-coffee-script'
+
 let g:syntastic_auto_loc_list=1
 
 " Installing plugins the first time
