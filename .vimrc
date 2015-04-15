@@ -6,7 +6,7 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-"set encoding=utf-8 " Necessary to show Unicode glyphs
+set encoding=utf-8 " Necessary to show Unicode glyphs
 
 " Reload vimrc on save
 "autocmd! bufwritepost .vimrc source %
@@ -27,7 +27,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " Better file browser
@@ -44,7 +44,8 @@ let g:ctrlp_mruf_max = 150
 Bundle 'mattn/zencoding-vim'
 Bundle 'kien/tabman.vim'
 " Powerline
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Bundle 'powerline/powerline'
 " Terminal Vim with 256 colors colorscheme
 Bundle 'fisadev/fisa-vim-colorscheme'
 " Consoles as buffers
@@ -76,16 +77,24 @@ Bundle 'matchit.zip'
 " Gvim colorscheme
 Bundle 'Wombat'
 
+Bundle 'altercation/vim-colors-solarized'
+
 Bundle 'rking/ag.vim'
 
+" Erlang
 Bundle 'jimenezrick/vimerl'
+" Golang
+Bundle 'fatih/vim-go'
 
+Bundle 'jlanzarotta/bufexplorer'
 Bundle 'duff/vim-bufonly'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
 
+
 let g:syntastic_auto_loc_list=1
+let g:syntastic_javascript_checkers = ['jshint']
 
 " Installing plugins the first time
 if iCanHazVundle == 0
@@ -112,9 +121,10 @@ set nowritebackup
 set noswapfile
 
 set history=700
+set gdefault
 
 " Rebind <Leader> key
-let mapleader = "," 
+let mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -124,13 +134,11 @@ nmap <leader>w :w!<cr>
 " ----------------------------------------------------------------------------
 set tags=tags
 "move into tags and back
-map <silent><C-Left> <C-T> 
+map <silent><C-Left> <C-T>
 map <silent><C-Right> <C-]>
 
-map <leader>v :bnext<CR>
-map <leader>c :bprevious<CR>
-"map <silent><leader>t <C-T> 
-"map <silent><leader>b <C-]> 
+"map <silent><leader>t <C-T>
+"map <silent><leader>b <C-]>
 "move between func defs
 map <C-up> [[
 map <C-down> ]]
@@ -147,6 +155,8 @@ imap jk <esc>
 
 map ö :
 
+map <leader>ä oimport ipdb; ipdb.set_trace()
+
 " split navigation
 "map <C-up> <c-w>j
 """map <C-down> <c-w>k
@@ -162,11 +172,10 @@ map ö :
 " Quick navigation
 map <C-j> jjjj
 map <C-k> kkkk
-map <C-l> 0
-map <C-h> $
-
+map <C-l> $
+map <C-h> 0
 " Ag
-map <leader>a <Esc>:Ag 
+map <leader>a <Esc>:Ag
 "set grepprg=ack\ --nogroup\ $*
 
 map <leader>t :TagbarToggle<CR>
@@ -190,8 +199,15 @@ nmap ,b :CtrlPBuffer<CR>
 nmap ,m :CtrlPMRUFiles<CR>
 
 " Buffers
-map <leader>b :bp<CR>
-map <leader>B :bn<CR>
+map <leader>v :bnext<CR>
+map <leader>c :bprevious<CR>
+map <leader>b :BufExplorer<CR>
+
+
+"let g:BufferListWidth = 25
+"let g:BufferListMaxWidth = 50
+"hi BufferSelected term=reverse ctermfg=white ctermbg=red cterm=bold
+"hi BufferNormal term=NONE ctermfg=black ctermbg=darkcyan cterm=NONE
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -220,7 +236,7 @@ set hlsearch               " highlight all search terms
 set incsearch              " highlight search text as entered
 set ignorecase             " ignore case when searching
 set smartcase              " case sensitive only if capitals in search term
-"set colorcolumn=80        " not available until Vim 7.3
+set colorcolumn=80        " not available until Vim 7.3
 set visualbell             " shut the fuck up
 set showmatch
 set number
@@ -229,25 +245,35 @@ set cursorline
 " Hightlight cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey40
 hi Cursor guibg=#0087ad
+hi ColorColumn ctermbg=lightgrey guibg=Grey20
 
-" Highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=darkgreen guibg=pink
-match ExtraWhitespace /\s\+\%#\@<!$/
+
+" Hightlight colum 120 and beyond
+let &colorcolumn="80,".join(range(120,999),",")
 " ----------------------------------------------------------------------------
 "  Graphical
 " ----------------------------------------------------------------------------
 
-set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
+
+set guifont=Inconsolata\ for\ Powerline:h15
+"let g:Powerline_symbols = 'fancy'
+"set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+"set fillchars+=stl:\ ,stlnc:\
+"set term=xterm-256color
+"set termencoding=utf-8
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 if has('gui_running')
   "colorscheme molokai
-  "colorscheme wombat 
-  colorscheme jompa_wombat 
+  "colorscheme wombat
+  colorscheme jompa_wombat
+  colorscheme solarized
+  set background=dark
   set guioptions-=T
-  if system("uname") == "Darwin\n" " on OSX
-    set guifont=Menlo:h14 "set lines=55
-    "set columns=94
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    set guifont=Inconsolata\ for\ Powerline:h15
   else                         " on Ubuntu
     set guifont=Monospace\ 9
     "winpos 1100 0              " put window at right edge of left monitor
@@ -256,8 +282,16 @@ if has('gui_running')
   endif
 endif
 
+
 """"""""""""""""""""""""""""""
 " => MRU plugin
 """"""""""""""""""""""""""""""
 "let MRU_Max_Entries = 400
 "map <leader>f :MRU<CR>
+
+" Colorscheme overrides
+hi ColorColumn ctermbg=lightgrey guibg=Grey20
+
+" Highlight trailing whitespace
+hi ExtraWhitespace ctermbg=darkgreen guibg=#A30008
+match ExtraWhitespace /\s\+\%#\@<!$/

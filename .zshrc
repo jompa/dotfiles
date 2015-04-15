@@ -33,8 +33,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+export GOPATH=$HOME/go
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/sbin:/usr/local/Cellar/smlnj/110.75/libexec/bin:/usr/local/share/npm/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/sbin:/usr/local/Cellar/smlnj/110.75/libexec/bin:/usr/local/share/npm/bin:$GOPATH/bin
 if [ -f `brew --prefix`/etc/autojump ]; then
   . `brew --prefix`/etc/autojump
 fi
@@ -44,3 +45,12 @@ export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 export PIP_VIRTUALENV_BASE=$WORKON_HOME # Tell pip to create its virtualenvs in $WORKON_HOME.
 export PIP_RESPECT_VIRTUALENV=true # Tell pip to automatically use the currently active virtualenv.
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh

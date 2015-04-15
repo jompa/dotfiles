@@ -13,5 +13,11 @@
     b = branch -v
 	br = branch
     nb = checkout -b 
+	workprofile = !git config user.email \"johan.kock@creuna.se\" && git config user.name \"jkock\"
+	g = grep --break --heading --line-number
 [color]
 	ui = true
+[grep]
+	lineNumber = true
+[push]
+	default = simple
