@@ -267,7 +267,6 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 if has('gui_running')
   "colorscheme molokai
   "colorscheme wombat
-  colorscheme jompa_wombat
   colorscheme solarized
   set background=dark
   set guioptions-=T
