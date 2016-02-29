@@ -83,8 +83,15 @@ Bundle 'rking/ag.vim'
 
 " Erlang
 Bundle 'jimenezrick/vimerl'
+
+" Elixir
+Bundle 'elixir-lang/vim-elixir'
+
+" Elm
+Bundle 'lambdatoast/elm.vim'
+
 " Golang
-Bundle 'fatih/vim-go'
+"Bundle 'fatih/vim-go'
 
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'duff/vim-bufonly'
