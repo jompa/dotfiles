@@ -41,7 +41,7 @@ Bundle 'kien/ctrlp.vim'
 " max number of mru entries, if it gets too large it takes time to load it
 let g:ctrlp_mruf_max = 150
 " Zen coding
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'kien/tabman.vim'
 " Powerline
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -113,8 +113,8 @@ endif
 
 " allow plugins by file type
 let g:syntastic_mode_map = { 'mode': 'passive' }
-filetype plugin on  " load filetype plugin
-filetype indent on  " load filetype plugen
+filetype plugin indent on  " load filetype plugin
+"filetype indent on  " load filetype plugen
 
 set whichwrap+=<,>,h,l
 
@@ -223,7 +223,7 @@ map <leader>b :BufExplorer<CR>
 set expandtab              " expand tabs to spaces
 set softtabstop=2
 set shiftwidth=4           " distance to shift lines with < and >
-set ts=4                   " tab character display size
+set tabstop=4                   " tab character display size
 set smarttab
 
 set lbr
@@ -243,7 +243,7 @@ set hlsearch               " highlight all search terms
 set incsearch              " highlight search text as entered
 set ignorecase             " ignore case when searching
 set smartcase              " case sensitive only if capitals in search term
-set colorcolumn=80        " not available until Vim 7.3
+"set colorcolumn=80        " not available until Vim 7.3
 set visualbell             " shut the fuck up
 set showmatch
 set number
@@ -252,42 +252,37 @@ set cursorline
 " Hightlight cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey40
 hi Cursor guibg=#0087ad
-hi ColorColumn ctermbg=lightgrey guibg=Grey20
+"hi ColorColumn ctermbg=lightgrey guibg=Grey20
 
 
 " Hightlight colum 120 and beyond
-let &colorcolumn="80,".join(range(120,999),",")
+"let &colorcolumn="80,".join(range(120,999),",")
 " ----------------------------------------------------------------------------
 "  Graphical
 " ----------------------------------------------------------------------------
 
-
-set guifont=Inconsolata\ for\ Powerline:h15
-"let g:Powerline_symbols = 'fancy'
-"set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
+let g:solarized_termcolors=256
+set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-"set fillchars+=stl:\ ,stlnc:\
-"set term=xterm-256color
-"set termencoding=utf-8
+set termencoding=utf-8
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+colorscheme solarized
 
 if has('gui_running')
-  "colorscheme molokai
-  "colorscheme wombat
-  colorscheme solarized
   set background=dark
   set guioptions-=T
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    set guifont=Inconsolata\ for\ Powerline:h15
-  else                         " on Ubuntu
-    set guifont=Monospace\ 9
-    "winpos 1100 0              " put window at right edge of left monitor
-    "set lines=85
-    "set columns=120
-  endif
+  let g:Powerline_symbols = 'fancy'
+else
+  set background=light
 endif
 
+
+let s:uname = system("uname")
+if s:uname == "Darwin\n"
+  set guifont=Inconsolata\ for\ Powerline:h15
+else                         " on Ubunt
+  set guifont=Monospace\
+endif
 
 """"""""""""""""""""""""""""""
 " => MRU plugin
@@ -296,8 +291,8 @@ endif
 "map <leader>f :MRU<CR>
 
 " Colorscheme overrides
-hi ColorColumn ctermbg=lightgrey guibg=Grey20
+"hi ColorColumn ctermbg=lightgrey guibg=Grey20
 
 " Highlight trailing whitespace
-hi ExtraWhitespace ctermbg=darkgreen guibg=#A30008
-match ExtraWhitespace /\s\+\%#\@<!$/
+"hi ExtraWhitespace ctermbg=darkgreen guibg=#A30008
+"match ExtraWhitespace /\s\+\%#\@<!$/
