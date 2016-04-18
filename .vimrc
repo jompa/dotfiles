@@ -127,6 +127,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+set wildignore+=*/.git/*,*/.DS_Store,*/node_modules/*
+
 set history=700
 set gdefault
 
