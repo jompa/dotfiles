@@ -48,6 +48,9 @@ Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 "Bundle 'powerline/powerline'
 " Terminal Vim with 256 colors colorscheme
 Bundle 'fisadev/fisa-vim-colorscheme'
+Bundle 'davb5/wombat256dave'
+Bundle 'jpo/vim-railscasts-theme'
+
 " Consoles as buffers
 Bundle 'rosenfeld/conque-term'
 " Pending tasks list
@@ -156,15 +159,22 @@ map <C-down> ]]
 " ----------------------------------------------------------------------------
 
 " Map space to / (search) and c-space to ? (backgwards search)
-map <space> /
+"map <space> /
 map - /
-map <c-space> ?
+"map <c-space> ?
 "  exit insert mode
-imap jk <esc>
+" imap jk <esc>
+"inoremap <C-@> <esc>
+"noremap <nul> <esc>
+"inoremap <nul> <esc>
+"noremap <c-space> <esc>
+"inoremap <c-space> <esc>
+"map <c-space> <c-c>
 
 map ö :
 
 map <leader>ä oimport ipdb; ipdb.set_trace()
+set backspace=indent,eol,start
 
 " split navigation
 "map <C-up> <c-w>j
@@ -179,10 +189,7 @@ map <leader>ä oimport ipdb; ipdb.set_trace()
 "inoremap {}     {}
 
 " Quick navigation
-map <C-j> jjjj
-map <C-k> kkkk
 map <C-l> $
-map <C-h> 0
 " Ag
 map <leader>a <Esc>:Ag
 "set grepprg=ack\ --nogroup\ $*
@@ -264,11 +271,17 @@ hi Cursor guibg=#0087ad
 " ----------------------------------------------------------------------------
 
 let g:solarized_termcolors=256
-set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
+"set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set termencoding=utf-8
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-colorscheme solarized
+"colorscheme solarized
+colorscheme railscasts
+" use 256 colors in terminal
+if !has("gui_running")
+    set t_Co=256
+    set term=screen-256color
+endif"
 
 if has('gui_running')
   set background=dark
