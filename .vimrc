@@ -35,16 +35,19 @@ Bundle 'scrooloose/nerdtree'
 " Code commenter
 Bundle 'scrooloose/nerdcommenter'
 " Class/module browser
-Bundle 'majutsushi/tagbar'
+"Bundle 'majutsushi/tagbar'
 " Code and files fuzzy finder
 Bundle 'kien/ctrlp.vim'
 " max number of mru entries, if it gets too large it takes time to load it
 let g:ctrlp_mruf_max = 150
 " Zen coding
+" HTML
 Bundle 'mattn/emmet-vim'
-Bundle 'kien/tabman.vim'
+"Bundle 'kien/tabman.vim'
+"Vim Airline
+Bundle 'vim-airline/vim-airline'
 " Powerline
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 "Bundle 'powerline/powerline'
 " Terminal Vim with 256 colors colorscheme
 Bundle 'fisadev/fisa-vim-colorscheme'
@@ -52,56 +55,50 @@ Bundle 'davb5/wombat256dave'
 Bundle 'jpo/vim-railscasts-theme'
 
 " Consoles as buffers
-Bundle 'rosenfeld/conque-term'
+"Bundle 'rosenfeld/conque-term'
 " Pending tasks list
-Bundle 'fisadev/FixedTaskList.vim'
+"Bundle 'fisadev/FixedTaskList.vim'
 " Surround
 Bundle 'tpope/vim-surround'
 " Autoclose
-Bundle 'Townk/vim-autoclose'
+"Bundle 'Townk/vim-autoclose'
 " Indent text object
-Bundle 'michaeljsmith/vim-indent-object'
+"Bundle 'michaeljsmith/vim-indent-object'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
-" Bundle 'klen/python-mode'
+ "Bundle 'klen/python-mode'
 " Snippets manager (SnipMate), dependencies, and snippets repo
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
-Bundle 'garbas/vim-snipmate'
+"Bundle 'MarcWeber/vim-addon-mw-utils'
+"Bundle 'tomtom/tlib_vim'
+"Bundle 'honza/vim-snippets'
+"Bundle 'garbas/vim-snipmate'
 " Git diff icons on the side of the file lines
 Bundle 'airblade/vim-gitgutter'
 " Autocompletion
 Bundle 'AutoComplPop'
 " Search results counter
-Bundle 'IndexedSearch'
+"Bundle 'IndexedSearch'
 " XML/HTML tags navigation
-Bundle 'matchit.zip'
+"Bundle 'matchit.zip'
 " Gvim colorscheme
-Bundle 'Wombat'
-
+"Bundle 'Wombat'
 Bundle 'altercation/vim-colors-solarized'
-
 Bundle 'rking/ag.vim'
 
+" Syntax
 " Erlang
-Bundle 'jimenezrick/vimerl'
-
+"Bundle 'jimenezrick/vimerl'
 " Elixir
-Bundle 'elixir-lang/vim-elixir'
-
+"Bundle 'elixir-lang/vim-elixir'
 " Elm
-Bundle 'lambdatoast/elm.vim'
-
+"Bundle 'lambdatoast/elm.vim'
 " Golang
 "Bundle 'fatih/vim-go'
 
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'duff/vim-bufonly'
 Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/syntastic'
-Bundle 'kchmck/vim-coffee-script'
-
+Bundle 'vim-syntastic/syntastic'
 
 let g:syntastic_auto_loc_list=1
 let g:syntastic_javascript_checkers = ['jshint']
@@ -201,18 +198,18 @@ map <silent> <leader>n :NERDTreeToggle<CR>
 map <silent> <leader>N :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 " Exclude files
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$','__pycache__[[dir]]']
 
 "Fuzzyfinder
 "let g:fuf_file_exclude = '\v\~$|\.o$|\.exe$|\.bak$|\.swp|\.class$'
 "map <leader>f :FufFile **/<CR>
 " CtrlP (new fuzzy finder)
 let g:ctrlp_map = ',e'
-nmap ,g :CtrlPBufTag<CR>
-nmap ,G :CtrlPBufTagAll<CR>
-nmap ,f :CtrlPLine<CR>
-nmap ,b :CtrlPBuffer<CR>
-nmap ,m :CtrlPMRUFiles<CR>
+nmap <leader>g :CtrlPBufTag<CR>
+nmap <leader>G :CtrlPBufTagAll<CR>
+nmap <leader>f :CtrlPLine<CR>
+"nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>m :CtrlPMRUFiles<CR>
 
 " Buffers
 map <leader>v :bnext<CR>
