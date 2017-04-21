@@ -53,6 +53,7 @@ Bundle 'vim-airline/vim-airline'
 Bundle 'fisadev/fisa-vim-colorscheme'
 Bundle 'davb5/wombat256dave'
 Bundle 'jpo/vim-railscasts-theme'
+Bundle 'jpalardy/vim-slime'
 
 " Consoles as buffers
 "Bundle 'rosenfeld/conque-term'
@@ -308,3 +309,10 @@ endif
 " Highlight trailing whitespace
 "hi ExtraWhitespace ctermbg=darkgreen guibg=#A30008
 "match ExtraWhitespace /\s\+\%#\@<!$/
+
+" ----------------------------------------------------------------------------
+"  Slime
+" ----------------------------------------------------------------------------
+let g:slime_target = "tmux"
+xmap <leader>s <Plug>SlimeRegionSend
+nmap <leader>s <Plug>SlimeParagraphSend
