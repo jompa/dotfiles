@@ -99,10 +99,12 @@ Bundle 'rking/ag.vim'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'duff/vim-bufonly'
 Bundle 'tpope/vim-fugitive'
-Bundle 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
+"Bundle 'vim-syntastic/syntastic'
 
-let g:syntastic_auto_loc_list=1
-let g:syntastic_javascript_checkers = ['jshint']
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_javascript_checkers = ['eslint', 'flow']
+"let g:syntastic_javascript_flow_exe = 'flow'
 
 " Installing plugins the first time
 if iCanHazVundle == 0
@@ -111,9 +113,25 @@ if iCanHazVundle == 0
     :BundleInstall
 endif
 
+" Asynchronous Lint Engine (ALE)
+" Limit linters used for JavaScript.
+let g:ale_linters = {
+\  'javascript': ['flow', 'eslint'],
+\}
+highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
+highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
+let g:ale_sign_error = 'X' " could use emoji
+let g:ale_sign_warning = '?' " could use emoji
+let g:ale_statusline_format = ['X %d', '? %d', '']
+" %linter% is the name of the linter that provided the message
+" %s is the error or warning message
+let g:ale_echo_msg_format = '%linter% says %s'
+" Map keys to navigate between lines with errors and warnings.
+nnoremap <leader>an :ALENextWrap<cr>
+nnoremap <leader>ap :ALEPreviousWrap<cr>
 
 " allow plugins by file type
-let g:syntastic_mode_map = { 'mode': 'passive' }
+"let g:syntastic_mode_map = { 'mode': 'passive' }
 filetype plugin indent on  " load filetype plugin
 "filetype indent on  " load filetype plugen
 
@@ -161,7 +179,7 @@ map <C-down> ]]
 map - /
 "map <c-space> ?
 "  exit insert mode
-" imap jk <esc>
+imap <C-c> <esc>
 "inoremap <C-@> <esc>
 "noremap <nul> <esc>
 "inoremap <nul> <esc>
@@ -170,6 +188,8 @@ map - /
 "map <c-space> <c-c>
 
 map ö :
+map ä $
+map å 0
 
 map <leader>ä oimport ipdb; ipdb.set_trace()
 set backspace=indent,eol,start
@@ -237,7 +257,9 @@ set lbr
 set tw=500
 
 set ai "Auto indent
-set si "Smart indet
+set si "Smart indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 "set wrap "Wrap lines
 " ----------------------------------------------------------------------------
 "  Visual Cues
