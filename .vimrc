@@ -43,7 +43,9 @@ Bundle 'vim-airline/vim-airline'
 Bundle 'fisadev/fisa-vim-colorscheme'
 Bundle 'davb5/wombat256dave'
 Bundle 'jpo/vim-railscasts-theme'
-Bundle 'altercation/vim-colors-solarized'
+
+" True color
+Bundle 'lifepillar/vim-solarized8'
 
 " Surround
 Bundle 'tpope/vim-surround'
@@ -63,6 +65,9 @@ Plugin 'w0rp/ale'
 "Bundle 'lambdatoast/elm.vim'
 " Golang
 Bundle 'fatih/vim-go'
+
+" Typescript
+Bundle 'leafgarland/typescript-vim'
 
 Bundle 'jlanzarotta/bufexplorer'
 
@@ -211,8 +216,8 @@ set smarttab
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent "Auto indent
+set smartindent "Smart indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 "set wrap "Wrap lines
@@ -248,17 +253,14 @@ hi Cursor guibg=#0087ad
 " ----------------------------------------------------------------------------
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
-let g:solarized_termcolors=256
-colorscheme solarized
-"colorscheme railscasts
-" use 256 colors in terminal
-if !has("gui_running")
-    set t_Co=256
-    set term=screen-256color
-else
-    set background=dark
-    set guioptions-=T
-endif
+"solarized if you use "set termguicolors".
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+
+"let g:solarized_termcolors=256
+colorscheme solarized8
+set background=dark
 
 
 let s:uname = system("uname")
