@@ -220,6 +220,7 @@ set autoindent "Auto indent
 set smartindent "Smart indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
 "set wrap "Wrap lines
 " ----------------------------------------------------------------------------
 "  Visual Cues
