@@ -1,0 +1,46 @@
+session_name: dev
+windows:
+- window_name: eye
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - vim
+  - focus: 'true'
+  start_directory: /home/jompa/projects/motherbrain-eye
+
+- window_name: puppeteer
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - vim
+  - focus: 'true'
+  start_directory: /home/jompa/projects/motherbrain-puppeteer
+
+- window_name: nessy
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - vim
+  - focus: 'true'
+  start_directory: /home/jompa/projects/motherbrain-nessy
+
+- window_name: al
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - vim
+  - focus: 'true'
+  start_directory: /home/jompa/projects/motherbrain-al
+
+- window_name: cyrano
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - vim
+  - focus: 'true'
+  start_directory: /home/jompa/projects/motherbrain-cyrano

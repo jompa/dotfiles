@@ -1,0 +1,14 @@
+session_name: kafka-prod
+windows:
+- focus: 'true'
+  layout: e94f,380x76,0,0{95x76,0,0,13,94x76,96,0,16,94x76,191,0,14,94x76,286,0,15}
+  options: {}
+  before_script: ssh-add 
+  panes:
+  - shell_command: gcloud compute ssh kafka-1 --project motherbrain-cyrano --tunnel-through-iap
+    focus: 'true'
+  - shell_command: gcloud compute ssh kafka-2 --project motherbrain-cyrano --tunnel-through-iap
+  - shell_command: gcloud compute ssh kafka-3 --project motherbrain-cyrano --tunnel-through-iap
+  - shell_command: gcloud compute ssh kafka-4 --project motherbrain-cyrano --tunnel-through-iap
+  start_directory: /home/jompa
+  window_name: zsh

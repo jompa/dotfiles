@@ -1,0 +1,46 @@
+session_name: dev
+windows:
+- window_name: portal
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - 
+  - focus: 'true'
+  start_directory: /home/jompa/projects/lp-portal
+
+- window_name: data
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - 
+  - focus: 'true'
+  start_directory: /home/jompa/projects/lp-portal-data
+
+- window_name: unpackman
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - 
+  - focus: 'true'
+  start_directory: /home/jompa/projects/lp-unpackman
+
+- window_name: infra
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - 
+  - focus: 'true'
+  start_directory: /home/jompa/projects/lp-infra
+
+- window_name: conveyor
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - 
+  - focus: 'true'
+  start_directory: /home/jompa/projects/lp-conveyor
