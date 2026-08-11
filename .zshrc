@@ -107,11 +107,15 @@ source $ZSH/oh-my-zsh.sh
 #  Local customisation (tracked in ~/.dotfiles)
 # ----------------------------------------------------------------------------
 
-# Go. The official installer drops the toolchain in /usr/local/go and does not
-# touch PATH, so it has to be added by hand. $GOPATH/bin is where
-# `go install` puts binaries (gopls, etc).
+# Go. The toolchain itself is already on PATH: the official .pkg installer
+# registers /etc/paths.d/go, which macOS's path_helper picks up from
+# /etc/zprofile. Only $GOPATH/bin needs adding -- that is where `go install`
+# puts binaries such as gopls, and nothing else puts it on PATH.
+#
+# Note path_helper only runs for LOGIN shells, so a non-login shell
+# (`zsh -c`, some CI, editors spawned oddly) will not see /usr/local/go/bin.
 export GOPATH="$HOME/go"
-export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin"
 
 # tmuxp asks for this explicitly on every load: oh-my-zsh rewrites the tmux
 # window title, which overwrites the window_name set by the .tmuxp/ layouts.
@@ -121,3 +125,9 @@ export DISABLE_AUTO_TITLE='true'
 # one. Both are symlinked out of ~/.dotfiles by `make link`.
 [ -f "$HOME/jompa.zsh" ] && source "$HOME/jompa.zsh"
 [ -f "$HOME/.mac_alias" ] && source "$HOME/.mac_alias"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/johan.kock/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/johan.kock/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/johan.kock/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/johan.kock/google-cloud-sdk/completion.zsh.inc'; fi
