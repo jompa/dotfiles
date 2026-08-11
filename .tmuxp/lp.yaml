@@ -7,25 +7,16 @@ windows:
   panes:
   - 
   - focus: 'true'
-  start_directory: /home/jompa/projects/lp-portal
+  start_directory: /Users/jompa/projects/lp-portal
 
-- window_name: data
+- window_name: papers
   focus: 'true'
   layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
   options: {}
   panes:
   - 
   - focus: 'true'
-  start_directory: /home/jompa/projects/lp-portal-data
-
-- window_name: unpackman
-  focus: 'true'
-  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
-  options: {}
-  panes:
-  - 
-  - focus: 'true'
-  start_directory: /home/jompa/projects/lp-unpackman
+  start_directory: /Users/jompa/projects/lp-papers-please
 
 - window_name: infra
   focus: 'true'
@@ -34,7 +25,7 @@ windows:
   panes:
   - 
   - focus: 'true'
-  start_directory: /home/jompa/projects/lp-infra
+  start_directory: /Users/jompa/projects/lp-infra
 
 - window_name: conveyor
   focus: 'true'
@@ -43,4 +34,14 @@ windows:
   panes:
   - 
   - focus: 'true'
-  start_directory: /home/jompa/projects/lp-conveyor
+  start_directory: /Users/jompa/projects/lp-conveyor
+
+- window_name: projects
+  focus: 'true'
+  layout: 15f9,380x76,0,0{189x76,0,0,1,190x76,190,0,2}
+  options: {}
+  panes:
+  - 
+  - shell_command: vim journal
+    focus: 'true'
+  start_directory: /Users/jompa/projects
