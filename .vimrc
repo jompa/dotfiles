@@ -17,9 +17,9 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 "       .vim/pack/plugins/start/<repo>
 " then `make vim-helptags`. Update them all with `make vim-update`.
 "
-" Current set: nerdtree, nerdcommenter, ctrlp.vim, vim-airline, vim-solarized8,
-" vim-surround, vim-gitgutter, ale, vim-go, typescript-vim, bufexplorer,
-" vim-fugitive.
+" Current set: nerdtree, vim-commentary, ctrlp.vim, vim-airline,
+" vim-solarized8, vim-surround, vim-gitgutter, ale, vim-go, typescript-vim,
+" bufexplorer, vim-fugitive.
 "
 " ORDER MATTERS BELOW. Plugins in pack/*/start/ are not loaded while this file
 " is being sourced -- Vim loads them immediately afterwards. So:
@@ -34,13 +34,11 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 " ----------------------------------------------------------------------------
 
 " Leader key. This MUST be set before :packloadall, not down in the mappings
-" section: plugins that create default mappings (NERDCommenter's <leader>c*,
-" for one) expand <leader> at load time. Set it afterwards and they silently
-" bind to the default '\' instead, breaking the <leader><Space> map below.
+" section: any plugin that builds default <leader> mappings expands <leader> at
+" load time, so setting it later leaves those bound to the default '\'.
 let mapleader = ","
 
-" NERDTree / NERDCommenter
-let g:NERDAltDelims_javascript = 2
+" NERDTree
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__[[dir]]']
 
@@ -175,11 +173,21 @@ nnoremap <leader>k :cprevious<CR>
 autocmd QuickFixCmdPost grep,grepadd cwindow
 
 " ----------------------------------------------------------------------------
-" NerdTools
+" Commenting (vim-commentary)
 " ----------------------------------------------------------------------------
-" Settings for these live in the plugin configuration section at the top --
-" they have to be set before :packloadall.
-map <leader><Space> <leader>c<Space>
+" No mappings needed -- vim-commentary provides the standard operator:
+"   gc{motion}   comment/uncomment over a motion   (gcap = a paragraph)
+"   gcc          toggle the current line
+"   gc           in visual mode, toggle the selection
+" This replaces NERDCommenter's <leader><Space>. `gc` is the de facto standard
+" (it is also what Neovim adopted for its built-in commenting in 0.10), so it
+" is worth the muscle-memory switch.
+
+" ----------------------------------------------------------------------------
+" NERDTree
+" ----------------------------------------------------------------------------
+" Settings live in the plugin configuration section at the top -- they have to
+" be set before :packloadall.
 map <silent> <leader>n :NERDTreeToggle<CR>
 " Find current file in NerdTree
 map <silent> <leader>N :NERDTreeFind<CR>

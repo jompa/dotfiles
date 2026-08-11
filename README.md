@@ -144,9 +144,22 @@ in two:
 `:packadd!` is not a shortcut for this — it only searches `pack/*/opt/`, never
 `start/`.
 
+### Commenting
+
+vim-commentary, using the standard operator — no custom mappings:
+
+| Key | Action |
+| --- | --- |
+| `gcc` | toggle current line |
+| `gc{motion}` | toggle over a motion (`gcap` = paragraph) |
+| `gc` (visual) | toggle the selection |
+
+Replaced NERDCommenter's `<leader><Space>`. `gc` is the de facto standard and
+is what Neovim adopted for its built-in commenting in 0.10.
+
 ### Active plugins
 
-nerdtree, nerdcommenter, ctrlp.vim, vim-airline, vim-solarized8, vim-surround,
+nerdtree, vim-commentary, ctrlp.vim, vim-airline, vim-solarized8, vim-surround,
 vim-gitgutter, ale, vim-go, typescript-vim, bufexplorer, vim-fugitive
 
 ## Tmux
