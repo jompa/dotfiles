@@ -7,9 +7,10 @@
 
 REPO := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 LINK := $(REPO)/bin/link.sh
+DEPS := $(REPO)/bin/deps.sh
 
 .DEFAULT_GOAL := help
-.PHONY: help install link dry-run submodules vim-update vim-helptags
+.PHONY: help install link dry-run submodules vim-update vim-helptags deps deps-check
 
 help: ## Show this help
 	@echo 'dotfiles ($(REPO))'
@@ -21,6 +22,12 @@ help: ## Show this help
 	@echo 'Pass extra flags via ARGS, e.g. make link ARGS="--skip .gitconfig"'
 
 install: submodules link vim-helptags ## Init submodules, symlink, build vim helptags
+
+deps: ## Install dependencies (brew + gopls); reports what it will not touch
+	@"$(DEPS)" $(ARGS)
+
+deps-check: ## Report which dependencies are present or missing
+	@"$(DEPS)" --check $(ARGS)
 
 link: ## Symlink configs into your home dir (backing up what it replaces)
 	@"$(LINK)" --no-submodules $(ARGS)

@@ -13,6 +13,8 @@ make install     # init submodules, then symlink
 
 | Target | Does |
 | --- | --- |
+| `make deps` | Install dependencies (brew + gopls) |
+| `make deps-check` | Report which dependencies are missing |
 | `make install` | `submodules`, then `link`, then vim helptags |
 | `make link` | Symlink configs into `$HOME` |
 | `make dry-run` | Print the plan, change nothing |
@@ -91,14 +93,27 @@ client and `gd` means the same thing in every filetype.
 
 ## Dependencies
 
-- [oh-my-zsh](https://ohmyz.sh) at `~/.oh-my-zsh`
-- Vim 8 or newer (needs `+packages`; `vim --version | grep packages`)
-- `brew install tmux`
-- `brew install ripgrep` — `<leader>a` project search. Optional: without it the
-  config falls back to a recursive `grep`, which works but is slower.
-- `brew install tmuxp` — only for the `.tmuxp/` session layouts (currently not
-  installed, and those layouts have stale paths — see Known gaps)
-- `go` — only for vim-go's commands and `gopls`; both stay quiet without it
+```sh
+make deps-check   # what is missing
+make deps         # install it
+```
+
+Installed automatically — `tmux`, `ripgrep`, `tmuxp` (Homebrew) and `gopls`
+(`go install`). Re-running is a no-op.
+
+Reported but **never** installed automatically:
+
+- **oh-my-zsh** — its installer *replaces* `~/.zshrc`, which `make link` has
+  made a symlink into this repo, so running it would undo the setup. Clone it
+  directly instead: `git clone https://github.com/ohmyzsh/ohmyzsh.git
+  ~/.oh-my-zsh`
+- **go** — installed from the official tarball into `/usr/local/go`, not
+  Homebrew, so there is nothing safe to automate. Only needed for vim-go and
+  `gopls`; both stay quiet without it.
+- **vim** — 8 or newer with `+packages` (`vim --version | grep packages`). A
+  hard requirement, and not something to reinstall over blindly.
+
+`ripgrep` is optional: `<leader>a` falls back to a recursive `grep` without it.
 
 **No ctags.** Code navigation is LSP-based (see below), so there is no tags
 file to generate. `/usr/bin/ctags` on macOS is BSD ctags, which only handles
