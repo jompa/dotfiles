@@ -54,15 +54,40 @@ The editor configs are linked as **individual files, never as directories** —
 `extensions/`, `threads/`) that linking the directory would destroy. Don't
 convert those four rows in `bin/link.sh` into directory links.
 
+### Code navigation (LSP, not ctags)
+
+ALE doubles as an LSP client, so there's no tags file to regenerate and no
+extra plugin:
+
+| Key | Action |
+| --- | --- |
+| `gd` | go to definition |
+| `gy` / `gi` | type definition / implementation |
+| `gr` | find references |
+| `K` | hover (type + docs) |
+| `<leader>r` | rename symbol |
+| `<leader>.` | code action |
+
+Each language needs its server on `PATH`:
+
+```sh
+go install golang.org/x/tools/gopls@latest   # go
+npm i -g typescript                          # tsserver
+npm i -g pyright                             # python
+```
+
+vim-go's own gopls client and its `gd` binding are disabled
+(`g:go_gopls_enabled`, `g:go_def_mapping_enabled`) so ALE is the single LSP
+client and `gd` means the same thing in every filetype.
+
 ### Known gaps
 
-- **`.zshrc` is not linked.** The `.zshrc` in this repo has drifted from the
-  live `~/.zshrc` (a newer oh-my-zsh config). Reconcile them by hand, then add
-  a `.zshrc` row to `LINKS` in `bin/link.sh`.
-- `jompa.zsh` and `.mac_alias` are linked but **nothing sources them**. Add
-  `source ~/jompa.zsh` and `source ~/.mac_alias` to whichever `.zshrc` wins.
-- The repo `.zshrc` still references dead paths (Python 2.7 in
-  `/usr/local/Cellar`, old RVM/virtualenvwrapper).
+- `/usr/bin/vim` (9.1) shadows the newer Homebrew vim (9.2), because
+  `/opt/homebrew/bin` sits late in `PATH`. Both work with this config. Add
+  `eval "$(/opt/homebrew/bin/brew shellenv)"` early in `.zshrc` if you want
+  brew's tools to win generally — note that changes more than just vim.
+- `jompa.zsh` and `.mac_alias` overlap on `gs`/`gd`/`gc`/`lns`; `.mac_alias` is
+  sourced second and wins. Worth collapsing into one file.
 
 ## Dependencies
 

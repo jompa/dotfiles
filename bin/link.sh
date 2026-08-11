@@ -97,12 +97,8 @@ done
 # directories. "~/Library/Application Support/Zed" holds live application
 # state (db/, extensions/, threads/); linking the directory would destroy it.
 #
-# NOTE: .zshrc is deliberately absent. The live ~/.zshrc is a newer
-# oh-my-zsh config that has diverged from the copy in this repo; linking it
-# would silently downgrade the working shell. Reconcile the two by hand,
-# then add it back here.
-
 LINKS=(
+    ".zshrc|$HOME/.zshrc"
     ".vimrc|$HOME/.vimrc"
     ".vim|$HOME/.vim"
     ".tmux.conf|$HOME/.tmux.conf"

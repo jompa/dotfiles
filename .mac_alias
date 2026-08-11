@@ -10,9 +10,10 @@ alias djrs="python manage.py runserver"
 
 # zsh
 alias lns="ln -s"
-alias ...="../../"
+alias ...='cd ../..'
 
-# Virtualenv wrapper
-alias mkve='mkvirtualenv --no-site-packages --python=/usr/local/Cellar/python/2.7.3/bin/python'
-
-alias ctags="/usr/local/bin/ctags"
+# Removed: an alias pinning ctags to /usr/local/bin/ctags, which does not
+# exist -- it would have shadowed a working ctags (brew installs to
+# /opt/homebrew/bin). Removed too: mkve, which pointed at a Homebrew Python
+# 2.7.3 that is long gone. Both are also defined in jompa.zsh, which is
+# sourced first.

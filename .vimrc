@@ -49,9 +49,12 @@ let g:ctrlp_map = ',e'
 let g:ctrlp_mruf_max = 50
 
 " Asynchronous Lint Engine (ALE)
-" Limit linters used for JavaScript.
+" ALE is also the LSP client here (see the code navigation section below), so
+" the linter list doubles as the language-server list.
 let g:ale_linters = {
 \  'javascript': ['flow', 'eslint'],
+\  'go':         ['gopls', 'govet'],
+\  'typescript': ['tsserver', 'eslint'],
 \}
 let g:ale_sign_error = 'X' " could use emoji
 let g:ale_sign_warning = '?' " could use emoji
@@ -59,9 +62,35 @@ let g:ale_statusline_format = ['X %d', '? %d', '']
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
 let g:ale_echo_msg_format = '%linter% says %s'
+" LSP-backed completion. Must be set before ALE loads to take effect.
+let g:ale_completion_enabled = 1
 " Map keys to navigate between lines with errors and warnings.
 nnoremap <leader>an :ALENextWrap<cr>
 nnoremap <leader>ap :ALEPreviousWrap<cr>
+
+" ----------------------------------------------------------------------------
+"  Code navigation (LSP, via ALE)
+" ----------------------------------------------------------------------------
+" Replaces ctags. ALE speaks LSP directly, so no extra plugin is needed -- it
+" just needs a language server on PATH per language:
+"   go          gopls     go install golang.org/x/tools/gopls@latest
+"   typescript  tsserver  npm i -g typescript
+"   python      pyright   npm i -g pyright
+" These are type-aware, so unlike a tags file they distinguish a method from a
+" same-named function, and there is nothing to regenerate.
+nnoremap gd :ALEGoToDefinition<CR>
+nnoremap gy :ALEGoToTypeDefinition<CR>
+nnoremap gi :ALEGoToImplementation<CR>
+nnoremap gr :ALEFindReferences<CR>
+nnoremap K  :ALEHover<CR>
+nnoremap <leader>r :ALERename<CR>
+nnoremap <leader>. :ALECodeAction<CR>
+
+" vim-go ships its own gopls client and binds gd in Go buffers. Turn both off
+" so ALE is the single LSP client and gd behaves identically in every
+" language, rather than meaning something subtly different in Go files.
+let g:go_gopls_enabled = 0
+let g:go_def_mapping_enabled = 0
 
 " allow plugins by file type
 filetype plugin indent on  " load filetype plugin
