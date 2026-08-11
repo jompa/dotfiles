@@ -7,7 +7,7 @@ windows:
   panes:
   - vim
   - focus: 'true'
-  start_directory: /home/jompa/projects/motherbrain-eye
+  start_directory: $HOME/projects/motherbrain-eye
 
 - window_name: puppeteer
   focus: 'true'
@@ -16,7 +16,7 @@ windows:
   panes:
   - vim
   - focus: 'true'
-  start_directory: /home/jompa/projects/motherbrain-puppeteer
+  start_directory: $HOME/projects/motherbrain-puppeteer
 
 - window_name: nessy
   focus: 'true'
@@ -25,7 +25,7 @@ windows:
   panes:
   - vim
   - focus: 'true'
-  start_directory: /home/jompa/projects/motherbrain-nessy
+  start_directory: $HOME/projects/motherbrain-nessy
 
 - window_name: al
   focus: 'true'
@@ -34,7 +34,7 @@ windows:
   panes:
   - vim
   - focus: 'true'
-  start_directory: /home/jompa/projects/motherbrain-al
+  start_directory: $HOME/projects/motherbrain-al
 
 - window_name: cyrano
   focus: 'true'
@@ -43,4 +43,4 @@ windows:
   panes:
   - vim
   - focus: 'true'
-  start_directory: /home/jompa/projects/motherbrain-cyrano
+  start_directory: $HOME/projects/motherbrain-cyrano

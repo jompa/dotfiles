@@ -113,6 +113,10 @@ source $ZSH/oh-my-zsh.sh
 export GOPATH="$HOME/go"
 export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 
+# tmuxp asks for this explicitly on every load: oh-my-zsh rewrites the tmux
+# window title, which overwrites the window_name set by the .tmuxp/ layouts.
+export DISABLE_AUTO_TITLE='true'
+
 # Aliases live in their own files so they can be edited without touching this
 # one. Both are symlinked out of ~/.dotfiles by `make link`.
 [ -f "$HOME/jompa.zsh" ] && source "$HOME/jompa.zsh"

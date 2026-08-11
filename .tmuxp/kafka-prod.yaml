@@ -10,5 +10,5 @@ windows:
   - shell_command: gcloud compute ssh kafka-2 --project motherbrain-cyrano --tunnel-through-iap
   - shell_command: gcloud compute ssh kafka-3 --project motherbrain-cyrano --tunnel-through-iap
   - shell_command: gcloud compute ssh kafka-4 --project motherbrain-cyrano --tunnel-through-iap
-  start_directory: /home/jompa
+  start_directory: $HOME
   window_name: zsh

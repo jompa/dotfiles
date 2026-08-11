@@ -1,4 +1,4 @@
-session_name: dev
+session_name: cc
 windows:
 - window_name: client-core
   focus: 'true'
@@ -7,7 +7,7 @@ windows:
   panes:
   - 
   - focus: 'true'
-  start_directory: /Users/jompa/projects/client-core
+  start_directory: $HOME/projects/client-core
 
 - window_name: infra-k8s
   focus: 'true'
@@ -16,7 +16,7 @@ windows:
   panes:
   - 
   - focus: 'true'
-  start_directory: /Users/jompa/projects/infra-k8s
+  start_directory: $HOME/projects/infra-k8s
 
 - window_name: projects
   focus: 'true'
@@ -26,4 +26,4 @@ windows:
   - 
   - shell_command: vim journal
     focus: 'true'
-  start_directory: /Users/jompa/projects
+  start_directory: $HOME/projects
