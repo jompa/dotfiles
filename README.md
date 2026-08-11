@@ -93,11 +93,17 @@ client and `gd` means the same thing in every filetype.
 
 - [oh-my-zsh](https://ohmyz.sh) at `~/.oh-my-zsh`
 - Vim 8 or newer (needs `+packages`; `vim --version | grep packages`)
-- `brew install ripgrep` — used by `<leader>a` project search. Without it the
+- `brew install tmux`
+- `brew install ripgrep` — `<leader>a` project search. Optional: without it the
   config falls back to a recursive `grep`, which works but is slower.
-- `brew install ctags tmux`
-- `tmuxp` for the `.tmuxp/` session layouts
-- `go` — only if you want vim-go's commands; it stays quiet when go is absent
+- `brew install tmuxp` — only for the `.tmuxp/` session layouts (currently not
+  installed, and those layouts have stale paths — see Known gaps)
+- `go` — only for vim-go's commands and `gopls`; both stay quiet without it
+
+**No ctags.** Code navigation is LSP-based (see below), so there is no tags
+file to generate. `/usr/bin/ctags` on macOS is BSD ctags, which only handles
+C/Pascal/Fortran/Lisp/yacc anyway — it could not index Go, TypeScript or Python
+even if something wanted it to.
 
 ## Vim
 

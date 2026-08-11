@@ -80,7 +80,9 @@ installed — every instance was found by checking rather than reading:
 
 - `ag.vim` configured, `ag` never installed (`<leader>a` silently dead)
 - `.mac_alias` pinned `ctags` to a nonexistent `/usr/local/bin/ctags`, which
-  would have shadowed a working one
+  would have shadowed the real `/usr/bin/ctags`. (Nothing needs ctags now —
+  navigation is LSP-based — and the system one is BSD ctags, which cannot index
+  Go, TypeScript or Python regardless.)
 - the old `.zshrc` sourced a missing `virtualenvwrapper.sh` on every shell start
 - all 13 `start_directory` paths in `.tmuxp/*.yaml` point at `/Users/jompa` or
   `/home/jompa`; the user is `johan.kock`, so none exist
