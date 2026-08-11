@@ -119,6 +119,15 @@ source $ZSH/oh-my-zsh.sh
 # installed, so none of those are affected.
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
+# OpenSSL 4 for the `openssl` CLI. It is a keg-only formula, so Homebrew does
+# not symlink it into /opt/homebrew/bin and its path has to be added by hand.
+# openssl@3 stays installed and linked because python@3.14, tmux, tmuxp and
+# libevent link against it -- those keep using 3.x libraries regardless of what
+# this puts on PATH, since linking is resolved at build time, not by PATH.
+if [ -d /opt/homebrew/opt/openssl@4/bin ]; then
+  export PATH="/opt/homebrew/opt/openssl@4/bin:$PATH"
+fi
+
 # Go. The toolchain itself is already on PATH: the official .pkg installer
 # registers /etc/paths.d/go, which macOS's path_helper picks up from
 # /etc/zprofile. Only $GOPATH/bin needs adding -- that is where `go install`

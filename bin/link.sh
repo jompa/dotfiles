@@ -108,8 +108,8 @@ LINKS=(
     ".mac_alias|$HOME/.mac_alias"
     "vscode/settings.json|$HOME/Library/Application Support/Code/User/settings.json"
     "vscode/keybindings.json|$HOME/Library/Application Support/Code/User/keybindings.json"
-    "zed/settings.json|$HOME/Library/Application Support/Zed/settings.json"
-    "zed/keymap.json|$HOME/Library/Application Support/Zed/keymap.json"
+    "zed/settings.json|$HOME/.config/zed/settings.json"
+    "zed/keymap.json|$HOME/.config/zed/keymap.json"
 )
 
 # ---------------------------------------------------------------- state
