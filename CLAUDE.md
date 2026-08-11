@@ -84,8 +84,8 @@ installed — every instance was found by checking rather than reading:
   navigation is LSP-based — and the system one is BSD ctags, which cannot index
   Go, TypeScript or Python regardless.)
 - the old `.zshrc` sourced a missing `virtualenvwrapper.sh` on every shell start
-- all 13 `start_directory` paths in `.tmuxp/*.yaml` point at `/Users/jompa` or
-  `/home/jompa`; the user is `johan.kock`, so none exist
+- all 13 `start_directory` paths in `.tmuxp/*.yaml` pointed at `/Users/jompa` or
+  `/home/jompa`; the user is `johan.kock`, so none existed (now `$HOME`-relative)
 - `vscode/settings.json` configures GitHub Copilot; the extension is not
   installed
 - Go was installed at `/usr/local/go` but never added to `PATH`

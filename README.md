@@ -185,5 +185,22 @@ vim-gitgutter, ale, vim-go, typescript-vim, bufexplorer, vim-fugitive
 
 ## Tmux
 
-`.tmux.conf` plus session layouts in `.tmuxp/` (`cc`, `dev`, `kafka-prod`, `lp`).
-Start one with `tmuxp load dev`.
+`.tmux.conf` plus session layouts in `.tmuxp/`. Start one with:
+
+```sh
+tmuxp load cc          # client-core + infra-k8s
+tmuxp load dev         # the motherbrain-* set
+tmuxp load lp          # lp-portal, papers, infra, conveyor
+tmuxp load kafka-prod  # 4 gcloud ssh panes
+```
+
+Paths are `$HOME`-relative, so the same layouts work on macOS and Linux (tmuxp
+expands `$HOME`, `${HOME}` and `~`). Each file's `session_name` matches its
+filename — they previously all said `dev`, which meant loading a second layout
+silently attached to the first and discarded the new one.
+
+Windows whose repo isn't cloned locally open in `$HOME` instead; tmuxp does not
+fail the load, so a partially-cloned machine still works.
+
+`.zshrc` exports `DISABLE_AUTO_TITLE='true'` because oh-my-zsh otherwise
+overwrites the `window_name` these layouts set.
