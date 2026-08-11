@@ -1,1 +1,4 @@
-.vim/bundle/
+# Vim plugins are installed by Vundle, not tracked here -- except Vundle
+# itself, which is a submodule and must stay visible to git.
+.vim/bundle/*
+!.vim/bundle/vundle

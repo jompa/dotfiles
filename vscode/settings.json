@@ -40,7 +40,6 @@
   "snyk.yesWelcomeNotification": false,
   "snyk.advanced.autoScanOpenSourceSecurity": true,
   "snyk.advanced.advancedMode": true,
-  "snyk.token": "REMOVED-SEE-GIT-HISTORY-REWRITE",
   "go.toolsManagement.autoUpdate": true,
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
