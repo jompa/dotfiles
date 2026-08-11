@@ -8,3 +8,22 @@
 *.swo
 
 .DS_Store
+
+# Claude Code: only hand-written config belongs here. Everything below holds
+# session transcripts, shell environments or file snapshots -- the purged Snyk
+# token still appears in several of them, and this repo is public.
+claude/projects/
+claude/sessions/
+claude/session-env/
+claude/shell-snapshots/
+claude/file-history/
+claude/history.jsonl
+claude/plans/
+claude/cache/
+claude/backups/
+claude/todos/
+claude/statsig/
+claude/.credentials.json
+claude/*cache*.json
+claude/policy-limits.json
+claude/remote-settings.json
