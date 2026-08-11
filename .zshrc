@@ -107,6 +107,18 @@ source $ZSH/oh-my-zsh.sh
 #  Local customisation (tracked in ~/.dotfiles)
 # ----------------------------------------------------------------------------
 
+# Put Homebrew ahead of the system paths. It is registered via
+# /etc/paths.d/homebrew, which macOS's path_helper APPENDS after /etc/paths --
+# and /etc/paths contains /usr/bin, so system binaries were winning. That is
+# the opposite of Homebrew's documented setup, which prepends via
+# `brew shellenv` in ~/.zprofile (absent here).
+#
+# In practice this only changes: vim (9.1 -> 9.2), openssl (Apple's LibreSSL
+# -> OpenSSL 3.x), xxd, and python3/pip3 (same 3.14.6, different prefix).
+# There is no Homebrew git, curl, ruby, perl, bash, zsh, make or node
+# installed, so none of those are affected.
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
 # Go. The toolchain itself is already on PATH: the official .pkg installer
 # registers /etc/paths.d/go, which macOS's path_helper picks up from
 # /etc/zprofile. Only $GOPATH/bin needs adding -- that is where `go install`
@@ -131,3 +143,10 @@ if [ -f '/Users/johan.kock/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/joha
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/johan.kock/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/johan.kock/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Collapse duplicate PATH entries, keeping the FIRST occurrence of each so the
+# precedence set above is preserved. /opt/homebrew/bin in particular is added
+# twice: once by the prepend above, once by path_helper via
+# /etc/paths.d/homebrew. Must stay last -- anything that appends to PATH after
+# this line reintroduces duplicates.
+typeset -U path PATH

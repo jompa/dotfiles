@@ -39,8 +39,10 @@ alias tree='nocorrect tree'
 alias gx='gitx --all'
 alias gk='gitk --all &'
 
-#http://tooky.github.com/2010/04/08/there-was-a-problem-with-the-editor-vi-git-on-mac-os-x.html
-export EDITOR=/usr/bin/vim
+# Not an absolute path: pinning /usr/bin/vim would force the older system vim
+# (9.1) for git and friends while the interactive `vim` resolves to Homebrew's
+# 9.2, which PATH now prefers.
+export EDITOR=vim
 
 alias ll='ls -lh'
 alias la='ls -lAh'
