@@ -1,5 +1,5 @@
 {
-  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Dark+",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "vim.hlsearch": true,
@@ -17,6 +17,13 @@
     {
       "before": ["-"],
       "commands": ["/"]
+    },
+    {
+      "before": ["leader", "e"],
+      "commands": [
+        "go-to-next-error.nextInFiles.warning",
+        "editor.action.marker.nextInFiles"
+      ]
     }
   ],
   "workbench.editorAssociations": {
@@ -40,12 +47,23 @@
     "*": true,
     "yaml": true,
     "plaintext": false,
-    "markdown": false
+    "markdown": true
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[yaml]": {
+    "editor.formatOnSave": false
+  },
+  "[terraform]": {
+    "editor.formatOnSave": false
+  },
+  "window.zoomLevel": 1,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "testing.resultsView.layout": "treeLeft"
 }
