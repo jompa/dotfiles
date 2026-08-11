@@ -5,93 +5,54 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 
 " Reload vimrc on save
 "autocmd! bufwritepost .vimrc source %
-" Setting up Vundle - the vim plugin bundler
 
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle..."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
-endif
+" ----------------------------------------------------------------------------
+"  Plugins
+" ----------------------------------------------------------------------------
+" Managed by Vim's built-in package support (:help packages), not a plugin
+" manager. Each plugin is a git submodule under
+"   ~/.vim/pack/plugins/start/
+" so versions are pinned by this repo. Add one with:
+"   git submodule add --depth 1 https://github.com/<owner>/<repo>.git \
+"       .vim/pack/plugins/start/<repo>
+" then `make vim-helptags`. Update them all with `make vim-update`.
+"
+" Current set: nerdtree, nerdcommenter, ctrlp.vim, vim-airline, vim-solarized8,
+" vim-surround, vim-gitgutter, ale, vim-go, typescript-vim, bufexplorer,
+" vim-fugitive.
+"
+" ORDER MATTERS BELOW. Plugins in pack/*/start/ are not loaded while this file
+" is being sourced -- Vim loads them immediately afterwards. So:
+"   * plugin configuration (g:* variables) must be set BEFORE :packloadall
+"   * anything that needs a plugin present (e.g. :colorscheme from a plugin)
+"     must come AFTER :packloadall
+" Note :packadd! cannot be used as a shortcut here -- it only searches
+" pack/*/opt/, not pack/*/start/.
 
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" ----------------------------------------------------------------------------
+"  Plugin configuration (must precede :packloadall)
+" ----------------------------------------------------------------------------
 
+" Leader key. This MUST be set before :packloadall, not down in the mappings
+" section: plugins that create default mappings (NERDCommenter's <leader>c*,
+" for one) expand <leader> at load time. Set it afterwards and they silently
+" bind to the default '\' instead, breaking the <leader><Space> map below.
+let mapleader = ","
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-
-" Better file browser
-Bundle 'scrooloose/nerdtree'
-" Code commenter
-Bundle 'scrooloose/nerdcommenter'
+" NERDTree / NERDCommenter
 let g:NERDAltDelims_javascript = 2
-" Code and files fuzzy finder
-Bundle 'ctrlpvim/ctrlp.vim'
-" max number of mru entries, if it gets too large it takes time to load it
+let NERDTreeShowHidden = 1
+let NERDTreeIgnore = ['\.pyc$', '__pycache__[[dir]]']
+
+" CtrlP -- max number of mru entries; too large and it gets slow to load
+let g:ctrlp_map = ',e'
 let g:ctrlp_mruf_max = 50
-
-"Vim Airline
-Bundle 'vim-airline/vim-airline'
-
-" Terminal Vim with 256 colors colorscheme
-Bundle 'fisadev/fisa-vim-colorscheme'
-Bundle 'davb5/wombat256dave'
-Bundle 'jpo/vim-railscasts-theme'
-
-" True color
-Bundle 'lifepillar/vim-solarized8'
-
-" Surround
-Bundle 'tpope/vim-surround'
-" Git diff icons on the side of the file lines
-Bundle 'airblade/vim-gitgutter'
-" Autocompletion
-"Bundle 'AutoComplPop'
-Bundle 'rking/ag.vim'
-
-" Syntax
-Plugin 'w0rp/ale'
-" Erlang
-"Bundle 'jimenezrick/vimerl'
-" Elixir
-"Bundle 'elixir-lang/vim-elixir'
-" Elm
-"Bundle 'lambdatoast/elm.vim'
-" Golang
-Bundle 'fatih/vim-go'
-
-" Typescript
-Bundle 'leafgarland/typescript-vim'
-
-Bundle 'jlanzarotta/bufexplorer'
-
-" Git
-Bundle 'tpope/vim-fugitive'
-
-" Tmux integration
-"Bundle 'jpalardy/vim-slime'
-
-" Installing plugins the first time
-if iCanHazVundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall
-endif
-
 
 " Asynchronous Lint Engine (ALE)
 " Limit linters used for JavaScript.
 let g:ale_linters = {
 \  'javascript': ['flow', 'eslint'],
 \}
-highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
-highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
 let g:ale_sign_error = 'X' " could use emoji
 let g:ale_sign_warning = '?' " could use emoji
 let g:ale_statusline_format = ['X %d', '? %d', '']
@@ -104,7 +65,20 @@ nnoremap <leader>ap :ALEPreviousWrap<cr>
 
 " allow plugins by file type
 filetype plugin indent on  " load filetype plugin
-"filetype indent on  " load filetype plugen
+
+" ----------------------------------------------------------------------------
+"  Load plugins
+" ----------------------------------------------------------------------------
+" Everything above this line is plugin *configuration*; everything that needs a
+" plugin to already be present goes below it. Vim would run this itself just
+" after sourcing this file -- doing it explicitly lets the colorscheme (which
+" ships in a plugin) be set here rather than deferred to VimEnter. Calling it
+" twice is harmless: Vim only loads packages once.
+packloadall
+
+" :help tags for the plugins are generated by `make vim-helptags` rather than
+" here -- running helptags on every startup rewrites a tags file in each
+" plugin's doc/ directory for no benefit.
 
 set whichwrap+=<,>,h,l
 
@@ -127,8 +101,8 @@ set gdefault
 "  Mappings
 " ----------------------------------------------------------------------------
 
-" Rebind <Leader> key
-let mapleader = ","
+" <Leader> is set in the plugin configuration section above -- it has to be in
+" place before plugins load.
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -149,28 +123,41 @@ set backspace=indent,eol,start
 " Quick navigation
 map <C-l> $
 map <C-h> 0
-" Ag
-map <leader>a <Esc>:Ag
-"set grepprg=ack\ --nogroup\ $*
+
+" Search across the project with ripgrep via the built-in :grep.
+" Replaces rking/ag.vim, which is archived upstream (and `ag` was not even
+" installed here, so <leader>a had been silently broken).
+" Prefer ripgrep (brew install ripgrep). Falls back to a recursive grep so the
+" mapping below works either way -- Vim's default grepprg is
+" `grep -n $* /dev/null`, which searches no files at all when given only a
+" pattern, so a fallback is required, not optional.
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --glob\ '!.git'
+  set grepformat=%f:%l:%c:%m
+else
+  set grepprg=grep\ -rn\ --exclude-dir=.git\ --exclude-dir=node_modules\ $*\ .
+endif
+" Type the pattern, then <CR>; results land in the quickfix window.
+map <leader>a <Esc>:grep! ""<Left>
+" Jump through matches
+nnoremap <leader>j :cnext<CR>
+nnoremap <leader>k :cprevious<CR>
+" Open quickfix automatically after a grep
+autocmd QuickFixCmdPost grep,grepadd cwindow
 
 " ----------------------------------------------------------------------------
 " NerdTools
 " ----------------------------------------------------------------------------
+" Settings for these live in the plugin configuration section at the top --
+" they have to be set before :packloadall.
 map <leader><Space> <leader>c<Space>
 map <silent> <leader>n :NERDTreeToggle<CR>
 " Find current file in NerdTree
 map <silent> <leader>N :NERDTreeFind<CR>
-let NERDTreeShowHidden=1
-" Exclude files
-let NERDTreeIgnore = ['\.pyc$','__pycache__[[dir]]']
-let g:NERDAltDelims_javascript = 2
 
 " ----------------------------------------------------------------------------
-" CtrlP (new fuzzy finder)
+" CtrlP (fuzzy finder)
 " ----------------------------------------------------------------------------
-let g:ctrlp_map = ',e'
-" max number of mru entries, if it gets too large it takes time to load it
-let g:ctrlp_mruf_max = 50
 "nmap <leader>g :CtrlPBufTag<CR>
 "nmap <leader>G :CtrlPBufTagAll<CR>
 "nmap <leader>f :CtrlPLine<CR>
@@ -239,9 +226,8 @@ set showmatch
 set number
 set cursorline
 
-" Hightlight cursorline
-hi CursorLine term=bold cterm=bold guibg=Grey40
-hi Cursor guibg=#0087ad
+" CursorLine/Cursor highlights are set in the Graphical section below, after
+" :colorscheme -- setting them here would just be overwritten.
 
 " Hightlight colum 120 and beyond
 "let &colorcolumn="80,".join(range(120,999),",")
@@ -260,8 +246,19 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
 "let g:solarized_termcolors=256
+" Works because :packloadall above has already put vim-solarized8 on the
+" runtimepath. Without that, this would fail on startup.
 colorscheme solarized8
 set background=dark
+
+" Highlight overrides. These must come after :colorscheme, which resets every
+" highlight group -- and after :packloadall, since ALE defines these groups
+" when it loads. Previously they sat near the top of this file and were
+" silently overwritten by both.
+highlight clear ALEErrorSign   " otherwise uses error bg color (typically red)
+highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
+hi CursorLine term=bold cterm=bold guibg=Grey40
+hi Cursor guibg=#0087ad
 
 
 let s:uname = system("uname")
